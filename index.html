@@ -6,180 +6,219 @@
   <title>Jurisprudencia Penal - Buscador</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; min-height: 100vh; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #eef1f6; min-height: 100vh; color: #1e293b; }
 
-    /* HEADER */
+    /* ── HEADER ── */
     header {
       background: #1B3A6B;
       color: white;
-      padding: 14px 32px;
+      padding: 0 32px;
+      height: 52px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-bottom: 3px solid #f0a500;
     }
-    header h1 { font-size: 17px; font-weight: 700; letter-spacing: 0.2px; }
-    header p  { font-size: 11px; color: #8aafd4; margin-top: 2px; }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .header-escudo {
+      width: 30px; height: 30px;
+      background: #f0a500;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 900; color: #1B3A6B;
+    }
+    header h1 { font-size: 15px; font-weight: 700; letter-spacing: 0.3px; }
+    header .sub { font-size: 10px; color: #7a9fc0; margin-top: 1px; letter-spacing: 0.2px; }
     header .badge {
-      font-size: 10px; color: #8aafd4;
-      border: 1px solid #3a5a8a;
+      font-size: 10px; color: #7a9fc0;
+      border: 1px solid #2d5490;
       padding: 3px 10px; border-radius: 20px;
+      letter-spacing: 0.3px;
     }
 
-    /* HERO */
+    /* ── HERO ── */
     .hero {
-      background: linear-gradient(160deg, #1B3A6B 0%, #2a5298 100%);
-      padding: 36px 24px 44px;
+      background: #1B3A6B;
+      padding: 32px 24px 40px;
       text-align: center;
       color: white;
+      border-bottom: 1px solid #16306090;
     }
-    .hero h2 { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
-    .hero p  { font-size: 13px; color: #9bbfe0; margin-bottom: 24px; }
+    .hero h2 {
+      font-size: 22px; font-weight: 700;
+      letter-spacing: 0.2px; margin-bottom: 5px;
+    }
+    .hero p { font-size: 12.5px; color: #7a9fc0; margin-bottom: 22px; }
 
-    /* BUSCADOR */
-    .search-wrap { max-width: 640px; margin: 0 auto; }
+    /* ── BUSCADOR ── */
+    .search-wrap { max-width: 620px; margin: 0 auto; }
     .search-row {
-      display: flex; gap: 8px;
-      background: white; border-radius: 10px;
-      padding: 6px 6px 6px 16px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+      display: flex; gap: 0;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
     }
+    .search-row:focus-within { border-color: #f0a500; }
     .search-row input {
       flex: 1; border: none; outline: none;
       font-size: 14px; color: #1e293b;
+      padding: 13px 16px;
       background: transparent;
     }
     .search-row input::placeholder { color: #94a3b8; }
     .search-row button {
-      background: #1B3A6B; color: white;
-      border: none; border-radius: 7px;
-      padding: 10px 20px; font-size: 13px;
-      font-weight: 600; cursor: pointer;
-      transition: background 0.2s;
-      white-space: nowrap;
+      background: #f0a500; color: #1B3A6B;
+      border: none; padding: 0 22px;
+      font-size: 13px; font-weight: 700;
+      cursor: pointer; transition: background 0.15s;
+      letter-spacing: 0.3px;
     }
-    .search-row button:hover { background: #2a4f80; }
+    .search-row button:hover { background: #d99400; }
 
-    /* SUGERIDAS */
+    /* ── SUGERIDAS ── */
     .sugeridas {
       display: flex; flex-wrap: wrap; gap: 6px;
-      justify-content: center; margin-top: 14px;
+      justify-content: center; margin-top: 12px;
     }
     .sugeridas button {
-      font-size: 11px; color: #c0d4ed;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.18);
-      padding: 4px 12px; border-radius: 20px;
-      cursor: pointer; transition: background 0.15s;
+      font-size: 11px; color: #8aafd4;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 3px 11px; border-radius: 20px;
+      cursor: pointer; transition: all 0.15s;
     }
-    .sugeridas button:hover { background: rgba(255,255,255,0.16); color: white; }
+    .sugeridas button:hover { background: rgba(255,255,255,0.12); color: white; border-color: rgba(255,255,255,0.25); }
 
-    /* BARRA FUENTES */
+    /* ── BARRA FUENTES ── */
     .fuentes-bar {
-      background: white; border-bottom: 1px solid #e2e8f0;
-      padding: 8px 24px; display: flex;
-      align-items: center; gap: 8px;
+      background: white;
+      border-bottom: 1px solid #dde3ed;
+      padding: 7px 24px;
+      display: flex; align-items: center; gap: 8px;
       flex-wrap: wrap; justify-content: center;
     }
-    .fuentes-bar .lbl { font-size: 10px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-    .fb { font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 20px; border: 1px solid; }
+    .fuentes-bar .lbl { font-size: 10px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
+    .fb { font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 20px; border: 1px solid; letter-spacing: 0.2px; }
     .fb-saij { color: #16a34a; border-color: #86efac; background: #f0fdf4; }
     .fb-csjn { color: #dc2626; border-color: #fca5a5; background: #fef2f2; }
     .fb-sf   { color: #2563eb; border-color: #93c5fd; background: #eff6ff; }
     .fb-pp   { color: #7c3aed; border-color: #c4b5fd; background: #f5f3ff; }
     .fb-dpi  { color: #d97706; border-color: #fcd34d; background: #fffbeb; }
+    .fb-ba   { color: #0891b2; border-color: #67e8f9; background: #ecfeff; }
+    .fb-ed   { color: #be185d; border-color: #f9a8d4; background: #fdf2f8; }
 
-    /* MAIN */
-    .main { max-width: 800px; margin: 0 auto; padding: 28px 20px 60px; }
+    /* ── MAIN ── */
+    .main { max-width: 780px; margin: 0 auto; padding: 24px 20px 60px; }
 
-    /* ESTADO VACIO */
-    .estado-vacio { text-align: center; padding: 70px 20px; color: #94a3b8; }
-    .estado-vacio .svg-icon { margin: 0 auto 16px; opacity: 0.25; }
-    .estado-vacio h3 { font-size: 17px; color: #64748b; margin-bottom: 6px; font-weight: 600; }
-    .estado-vacio p  { font-size: 13px; }
+    /* ── ESTADO VACIO ── */
+    .estado-vacio { text-align: center; padding: 60px 20px; }
+    .estado-vacio svg { margin: 0 auto 14px; display: block; }
+    .estado-vacio h3 { font-size: 16px; color: #475569; margin-bottom: 5px; font-weight: 600; }
+    .estado-vacio p  { font-size: 13px; color: #94a3b8; }
 
-    /* RESULTADOS CUSTOM */
+    /* ── CARGANDO ── */
+    .cargando { text-align: center; padding: 50px 20px; display: none; }
+    .spinner {
+      width: 30px; height: 30px; margin: 0 auto 12px;
+      border: 3px solid #dde3ed; border-top-color: #1B3A6B;
+      border-radius: 50%; animation: spin 0.65s linear infinite;
+    }
+    .cargando p { font-size: 13px; color: #64748b; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── RESULTADOS ── */
     #mis-resultados { display: none; }
     .res-meta {
       font-size: 11px; color: #94a3b8;
-      margin-bottom: 14px; padding-bottom: 10px;
-      border-bottom: 1px solid #e9eef4;
+      margin-bottom: 12px; padding-bottom: 10px;
+      border-bottom: 1px solid #dde3ed;
     }
     .res-card {
-      background: white; border: 1px solid #e9eef4;
-      border-radius: 10px; padding: 16px 18px;
-      margin-bottom: 10px;
-      transition: box-shadow 0.15s, border-color 0.15s;
+      background: white;
+      border: 1px solid #dde3ed;
+      border-left: 3px solid #1B3A6B;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      margin-bottom: 8px;
+      transition: border-left-color 0.15s, box-shadow 0.15s;
     }
-    .res-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); border-color: #cbd5e1; }
+    .res-card:hover {
+      border-left-color: #f0a500;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    }
+    .res-header { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
     .res-fuente {
-      font-size: 10px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.4px;
-      color: #2563eb; margin-bottom: 5px;
+      font-size: 9.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      color: #1B3A6B; background: #eef1f6;
+      padding: 2px 7px; border-radius: 3px;
+      white-space: nowrap;
     }
     .res-titulo {
       font-size: 14px; font-weight: 600;
       color: #1B3A6B; text-decoration: none;
-      line-height: 1.4; display: block; margin-bottom: 5px;
+      line-height: 1.35;
     }
-    .res-titulo:hover { text-decoration: underline; color: #2a5298; }
-    .res-snippet { font-size: 12.5px; color: #4b5563; line-height: 1.65; }
+    .res-titulo:hover { color: #f0a500; }
+    .res-snippet { font-size: 12.5px; color: #4b5563; line-height: 1.6; margin-top: 5px; }
     .res-snippet b { color: #1B3A6B; font-weight: 600; }
-    .res-url { font-size: 10.5px; color: #94a3b8; margin-top: 6px; }
+    .res-url { font-size: 10.5px; color: #94a3b8; margin-top: 5px; }
 
-    /* PAGINACION */
-    .paginacion { display: flex; justify-content: center; gap: 6px; margin-top: 20px; flex-wrap: wrap; }
+    /* ── PAGINACION ── */
+    .paginacion { display: flex; justify-content: center; gap: 5px; margin-top: 20px; flex-wrap: wrap; }
     .pag-btn {
-      background: white; color: #1B3A6B;
-      border: 1px solid #cbd5e1; border-radius: 6px;
-      padding: 5px 12px; font-size: 12px;
+      background: white; color: #475569;
+      border: 1px solid #dde3ed; border-radius: 5px;
+      padding: 5px 11px; font-size: 12px;
       font-weight: 500; cursor: pointer;
       transition: all 0.15s;
     }
-    .pag-btn:hover { background: #f1f5f9; }
+    .pag-btn:hover { background: #eef1f6; color: #1B3A6B; }
     .pag-btn.activo { background: #1B3A6B; color: white; border-color: #1B3A6B; }
 
-    /* CARGANDO */
-    .cargando { text-align: center; padding: 50px 20px; color: #94a3b8; display: none; }
-    .spinner {
-      width: 32px; height: 32px; margin: 0 auto 12px;
-      border: 3px solid #e2e8f0; border-top-color: #1B3A6B;
-      border-radius: 50%; animation: spin 0.7s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
-      background: #1B3A6B; color: #7a9fc0;
-      text-align: center; padding: 16px;
-      font-size: 11px; margin-top: 40px;
+      background: #1B3A6B;
+      border-top: 3px solid #f0a500;
+      color: #5a7fa8; text-align: center;
+      padding: 14px; font-size: 11px; margin-top: 40px;
     }
-    footer a { color: #7a9fc0; text-decoration: none; }
-    footer a:hover { color: white; }
+    footer a { color: #5a7fa8; text-decoration: none; }
+    footer a:hover { color: #a8c4de; }
 
     @media (max-width: 600px) {
-      .hero h2 { font-size: 20px; }
-      .search-row { flex-direction: column; padding: 10px; }
-      .search-row button { border-radius: 7px; padding: 10px; }
+      header { padding: 0 16px; }
+      .hero h2 { font-size: 19px; }
+      .search-row { flex-direction: column; }
+      .search-row button { padding: 12px; border-radius: 0 0 6px 6px; }
     }
   </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
-  <div>
-    <h1>Jurisprudencia Penal</h1>
-    <p>CSJN &middot; SAIJ &middot; PJ Santa Fe &middot; Pensamiento Penal &middot; DPI</p>
+  <div class="header-left">
+    <div class="header-escudo">AP</div>
+    <div>
+      <h1>Jurisprudencia Penal</h1>
+      <div class="sub">CSJN &middot; SAIJ &middot; PJ Santa Fe &middot; Pensamiento Penal &middot; DPI &middot; SCBA</div>
+    </div>
   </div>
   <span class="badge">Acceso gratuito</span>
 </header>
 
+<!-- HERO -->
 <div class="hero">
   <h2>Buscador de Jurisprudencia Penal</h2>
-  <p>Buscá por concepto, caratula, articulo o tema juridico en las principales fuentes penales</p>
+  <p>Busca por concepto, caratula, articulo o tema juridico en las principales fuentes penales</p>
   <div class="search-wrap">
     <div class="search-row">
-      <input type="text" id="q" placeholder='Ej: "prision preventiva madre lactante", "legitima defensa"...' />
-      <button onclick="buscar(1)">Buscar</button>
+      <input type="text" id="q" placeholder='Ej: "prision preventiva madre lactante", "legitima defensa", "nemo tenetur"...' />
+      <button onclick="buscar(1)">BUSCAR</button>
     </div>
     <div class="sugeridas">
       <button onclick="sugerir('prision preventiva plazo razonable')">prision preventiva</button>
@@ -189,10 +228,12 @@
       <button onclick="sugerir('abuso sexual prueba testimonial')">abuso sexual</button>
       <button onclick="sugerir('excarcelacion peligro de fuga')">excarcelacion</button>
       <button onclick="sugerir('homicidio dolo eventual')">dolo eventual</button>
+      <button onclick="sugerir('prision domiciliaria madre')">prision domiciliaria</button>
     </div>
   </div>
 </div>
 
+<!-- BARRA FUENTES -->
 <div class="fuentes-bar">
   <span class="lbl">Fuentes:</span>
   <span class="fb fb-saij">SAIJ</span>
@@ -200,21 +241,24 @@
   <span class="fb fb-sf">PJ Santa Fe</span>
   <span class="fb fb-pp">Pensamiento Penal</span>
   <span class="fb fb-dpi">DPI Cuantico</span>
+  <span class="fb fb-ba">SCBA</span>
+  <span class="fb fb-ed">El Derecho</span>
 </div>
 
+<!-- CONTENIDO -->
 <div class="main">
 
   <div class="estado-vacio" id="estado-vacio">
-    <svg class="svg-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.5">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.2" opacity="0.2">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
     </svg>
     <h3>Ingresa tu busqueda para encontrar fallos</h3>
-    <p>Podes buscar por concepto juridico, nombre de causa, articulo o tema</p>
+    <p>Podes buscar por concepto juridico, caratula, articulo del codigo o tema procesal</p>
   </div>
 
   <div class="cargando" id="cargando">
     <div class="spinner"></div>
-    <p>Buscando fallos...</p>
+    <p>Buscando fallos relevantes...</p>
   </div>
 
   <div id="mis-resultados">
@@ -225,123 +269,106 @@
 
 </div>
 
+<!-- FOOTER -->
 <footer>
-  <p>Jurisprudencia Penal &middot; Buscador gratuito &middot; <a href="https://weblegal.com.ar">weblegal.com.ar</a></p>
-  <p style="margin-top:3px">Resultados de SAIJ, CSJN, PJ Santa Fe, Pensamiento Penal y DPI Cuantico</p>
+  <p>Jurisprudencia Penal &middot; Buscador gratuito &middot; <a href="https://weblegal.com.ar">weblegal.com.ar</a> &middot; Antenucci Penal</p>
+  <p style="margin-top:3px">Resultados de SAIJ &middot; CSJN &middot; PJ Santa Fe &middot; Pensamiento Penal &middot; DPI Cuantico &middot; SCBA</p>
 </footer>
 
 <script>
   const CX  = '804a37b1a79d242b9';
-  const KEY = '';  // Sin API key: usamos endpoint publico
-  let paginaActual = 1;
-  let queryActual  = '';
+  const KEY = 'AIzaSyA1KsNiUcRJMn0OPPdcYkkGpOUpapoa5Ys';
 
-  // Mapa de dominios a etiquetas de fuente
   const FUENTES = {
-    'saij.gob.ar':              'SAIJ',
-    'sjconsulta.csjn.gov.ar':   'CSJN',
-    'csjn.gov.ar':              'CSJN',
-    'pjsantafe.gov.ar':         'PJ Santa Fe',
-    'pensamientopenal.com.ar':  'Pensamiento Penal',
-    'dpicuantico.com':          'DPI Cuantico',
+    'saij.gob.ar':             'SAIJ',
+    'sjconsulta.csjn.gov.ar':  'CSJN',
+    'csjn.gov.ar':             'CSJN',
+    'pjsantafe.gov.ar':        'PJ Santa Fe',
+    'pensamientopenal.com.ar': 'Pensamiento Penal',
+    'dpicuantico.com':         'DPI Cuantico',
+    'scba.gov.ar':             'SCBA',
+    'elderecho.com.ar':        'El Derecho',
+    'infojusnoticias.gov.ar':  'Infojus',
   };
 
   function etiquetaFuente(url) {
-    for (const [dominio, label] of Object.entries(FUENTES)) {
-      if (url.includes(dominio)) return label;
+    for (const [dom, lbl] of Object.entries(FUENTES)) {
+      if (url.includes(dom)) return lbl;
     }
-    return 'Web';
+    return new URL(url).hostname.replace('www.','');
   }
 
-  function sugerir(texto) {
-    document.getElementById('q').value = texto;
+  function sugerir(txt) {
+    document.getElementById('q').value = txt;
     buscar(1);
   }
 
-  document.getElementById('q').addEventListener('keydown', function(e) {
+  document.getElementById('q').addEventListener('keydown', e => {
     if (e.key === 'Enter') buscar(1);
   });
 
   function buscar(pagina) {
     const q = document.getElementById('q').value.trim();
     if (!q) return;
-    queryActual  = q;
-    paginaActual = pagina;
     const inicio = (pagina - 1) * 10 + 1;
 
     document.getElementById('estado-vacio').style.display  = 'none';
     document.getElementById('mis-resultados').style.display = 'none';
     document.getElementById('cargando').style.display      = 'block';
 
-    // Google Custom Search JSON API (100 consultas/dia gratis sin key)
-    const url = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD-_free_tier_placeholder&cx=${CX}&q=${encodeURIComponent(q)}&start=${inicio}&lr=lang_es&num=10`;
-
-    // Alternativa: endpoint sin key (limitado pero funcional para demo)
-    const urlAlt = `https://cse.google.com/cse/publicurl?cx=${CX}&q=${encodeURIComponent(q)}&start=${inicio}`;
-
-    fetch(`https://www.googleapis.com/customsearch/v1?key=AIzaSyA1KsNiUcRJMn0OPPdcYkkGpOUpapoa5Ys&cx=${CX}&q=${encodeURIComponent(q)}&start=${inicio}&num=10&lr=lang_es`)
+    fetch(`https://www.googleapis.com/customsearch/v1?key=${KEY}&cx=${CX}&q=${encodeURIComponent(q)}&start=${inicio}&num=10&lr=lang_es`)
       .then(r => r.json())
-      .then(data => mostrarResultados(data, pagina))
-      .catch(() => mostrarError());
+      .then(data => mostrar(data, pagina))
+      .catch(() => fallback(q));
   }
 
-  function mostrarResultados(data, pagina) {
+  function mostrar(data, pagina) {
     document.getElementById('cargando').style.display = 'none';
 
     if (!data.items || data.items.length === 0) {
-      document.getElementById('res-meta').textContent = 'Sin resultados para esta busqueda.';
+      document.getElementById('res-meta').textContent = 'Sin resultados. Proba con otras palabras.';
       document.getElementById('res-lista').innerHTML  = '';
       document.getElementById('paginacion').innerHTML = '';
       document.getElementById('mis-resultados').style.display = 'block';
       return;
     }
 
-    const total = data.searchInformation?.totalResults || '?';
+    const total  = parseInt(data.searchInformation?.totalResults || 0);
     const tiempo = data.searchInformation?.formattedSearchTime || '?';
     document.getElementById('res-meta').textContent =
-      `Aproximadamente ${parseInt(total).toLocaleString('es')} resultados (${tiempo} segundos)`;
+      `${total.toLocaleString('es-AR')} resultados aproximados (${tiempo} seg)`;
 
-    const lista = data.items.map(item => {
-      const fuente  = etiquetaFuente(item.link || '');
+    document.getElementById('res-lista').innerHTML = data.items.map(item => {
+      const fuente  = etiquetaFuente(item.link || 'x.com');
       const titulo  = item.htmlTitle  || item.title  || 'Sin titulo';
-      const snippet = item.htmlSnippet || item.snippet || '';
-      const link    = item.link || '#';
-      const url     = item.displayLink || link;
-
+      const snippet = (item.htmlSnippet || item.snippet || '').replace(/\n/g,' ');
       return `
         <div class="res-card">
-          <div class="res-fuente">${fuente}</div>
-          <a class="res-titulo" href="${link}" target="_blank" rel="noopener">${titulo}</a>
-          <div class="res-snippet">${snippet.replace(/\n/g, ' ')}</div>
-          <div class="res-url">${url}</div>
+          <div class="res-header">
+            <span class="res-fuente">${fuente}</span>
+            <a class="res-titulo" href="${item.link}" target="_blank" rel="noopener">${titulo}</a>
+          </div>
+          <div class="res-snippet">${snippet}</div>
+          <div class="res-url">${item.displayLink || ''}</div>
         </div>`;
     }).join('');
 
-    document.getElementById('res-lista').innerHTML = lista;
+    const paginas = Math.min(Math.ceil(total / 10), 10);
+    document.getElementById('paginacion').innerHTML =
+      Array.from({length: paginas}, (_,i) => i+1)
+        .map(i => `<button class="pag-btn ${i===pagina?'activo':''}" onclick="buscar(${i})">${i}</button>`)
+        .join('');
 
-    // Paginacion
-    const totalNum = parseInt(total) || 0;
-    const paginas  = Math.min(Math.ceil(totalNum / 10), 10);
-    let pags = '';
-    for (let i = 1; i <= paginas; i++) {
-      pags += `<button class="pag-btn ${i === pagina ? 'activo' : ''}" onclick="buscar(${i})">${i}</button>`;
-    }
-    document.getElementById('paginacion').innerHTML = pags;
     document.getElementById('mis-resultados').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function mostrarError() {
+  function fallback(q) {
     document.getElementById('cargando').style.display = 'none';
-    // Fallback: abrir Google con los sitios directamente
-    const q  = document.getElementById('q').value.trim();
-    const sites = 'site:saij.gob.ar OR site:sjconsulta.csjn.gov.ar OR site:pjsantafe.gov.ar OR site:pensamientopenal.com.ar OR site:dpicuantico.com';
-    window.open(`https://www.google.com/search?q=${encodeURIComponent(q + ' ' + sites)}`, '_blank');
     document.getElementById('estado-vacio').style.display = 'block';
-    document.getElementById('estado-vacio').querySelector('p').textContent =
-      'Abriendo resultados en Google... Para resultados directos aqui se necesita una API key gratuita.';
+    const sites = 'site:saij.gob.ar OR site:sjconsulta.csjn.gov.ar OR site:pjsantafe.gov.ar OR site:pensamientopenal.com.ar OR site:dpicuantico.com OR site:scba.gov.ar';
+    window.open(`https://www.google.com/search?q=${encodeURIComponent(q+' '+sites)}`, '_blank');
   }
 </script>
-
 </body>
 </html>
