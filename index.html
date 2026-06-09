@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jurisprudencia Penal — Buscador</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f4f8;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: #1B3A6B;
+      color: white;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    header .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header .logo span.icono { font-size: 28px; }
+    header .logo h1 { font-size: 20px; font-weight: 700; letter-spacing: 0.3px; }
+    header .logo p  { font-size: 11px; color: #a8c0e0; margin-top: 1px; }
+    header .badge {
+      background: #2a5298;
+      color: #a8c0e0;
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid #3a6bc0;
+    }
+
+    /* ── HERO / BUSCADOR ── */
+    .hero {
+      background: linear-gradient(135deg, #1B3A6B 0%, #2a5298 100%);
+      padding: 40px 24px 50px;
+      text-align: center;
+      color: white;
+    }
+    .hero h2 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .hero p {
+      font-size: 14px;
+      color: #a8c0e0;
+      margin-bottom: 28px;
+    }
+
+    /* Caja de búsqueda custom (visible antes del widget Google) */
+    .search-box {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+    }
+    .search-box input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: none;
+      font-size: 15px;
+      outline: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .search-box button {
+      background: #f5a623;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: background 0.2s;
+    }
+    .search-box button:hover { background: #e09400; }
+
+    /* Búsquedas sugeridas */
+    .sugeridas {
+      max-width: 680px;
+      margin: 14px auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .sugeridas span {
+      font-size: 11px;
+      color: #c8d8f0;
+      background: rgba(255,255,255,0.1);
+      padding: 4px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.15s;
+    }
+    .sugeridas span:hover { background: rgba(255,255,255,0.2); }
+
+    /* ── FUENTES ── */
+    .fuentes-bar {
+      background: white;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .fuentes-bar span.label {
+      font-size: 11px;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-right: 4px;
+    }
+    .fuente-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid;
+    }
+    .fb-saij    { color: #16a34a; border-color: #86efac; background: #f0fdf4; }
+    .fb-csjn    { color: #dc2626; border-color: #fca5a5; background: #fef2f2; }
+    .fb-sf      { color: #2563eb; border-color: #93c5fd; background: #eff6ff; }
+    .fb-pp      { color: #7c3aed; border-color: #c4b5fd; background: #f5f3ff; }
+    .fb-dpi     { color: #d97706; border-color: #fcd34d; background: #fffbeb; }
+
+    /* ── CONTENEDOR PRINCIPAL ── */
+    .main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    /* ── WIDGET GOOGLE ── */
+    /* Ocultar barra de búsqueda nativa de Google (usamos la nuestra) */
+    .gsc-search-box { display: none !important; }
+
+    /* Resultados */
+    .gsc-results-wrapper-overlay,
+    .gsc-results-wrapper-nooverlay {
+      border-radius: 12px !important;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08) !important;
+    }
+    .gsc-result {
+      border-radius: 10px !important;
+      margin-bottom: 12px !important;
+      border: 1px solid #e2e8f0 !important;
+      background: white !important;
+      padding: 14px !important;
+      transition: box-shadow 0.2s;
+    }
+    .gsc-result:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10) !important; }
+    .gs-title { font-size: 15px !important; font-weight: 600 !important; color: #1B3A6B !important; }
+    .gs-snippet { font-size: 13px !important; color: #475569 !important; line-height: 1.6 !important; }
+    .gsc-url-top { color: #64748b !important; font-size: 12px !important; }
+    .gsc-cursor-box { text-align: center; margin-top: 20px; }
+    .gsc-cursor-page {
+      background: #1B3A6B !important;
+      color: white !important;
+      border-radius: 6px !important;
+      padding: 6px 12px !important;
+      font-size: 13px !important;
+    }
+
+    /* Estado vacío */
+    .estado-vacio {
+      text-align: center;
+      padding: 60px 20px;
+      color: #94a3b8;
+    }
+    .estado-vacio .icono-grande { font-size: 64px; margin-bottom: 16px; }
+    .estado-vacio h3 { font-size: 18px; color: #64748b; margin-bottom: 8px; }
+    .estado-vacio p  { font-size: 13px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1B3A6B;
+      color: #a8c0e0;
+      text-align: center;
+      padding: 18px;
+      font-size: 12px;
+      margin-top: 40px;
+    }
+    footer a { color: #a8c0e0; text-decoration: none; }
+    footer a:hover { color: white; }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h2 { font-size: 20px; }
+      .search-box { flex-direction: column; }
+      .search-box button { border-radius: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <span class="icono">⚖️</span>
+    <div>
+      <h1>Jurisprudencia Penal</h1>
+      <p>CSJN · SAIJ · PJ Santa Fe · Pensamiento Penal · DPI</p>
+    </div>
+  </div>
+  <span class="badge">Acceso gratuito</span>
+</header>
+
+<!-- HERO + BUSCADOR -->
+<div class="hero">
+  <h2>Buscador de Jurisprudencia Penal</h2>
+  <p>Buscá por concepto, carátula, artículo o tema jurídico en las principales fuentes penales</p>
+
+  <div class="search-box">
+    <input
+      type="text"
+      id="mi-input"
+      placeholder='Ej: "prisión preventiva madre lactante", "legítima defensa", "nemo tenetur"...'
+      onkeydown="if(event.key==='Enter') hacerBusqueda()"
+    />
+    <button onclick="hacerBusqueda()">🔍 Buscar</button>
+  </div>
+
+  <div class="sugeridas">
+    <span onclick="buscarTermino('prisión preventiva plazo razonable')">prisión preventiva plazo razonable</span>
+    <span onclick="buscarTermino('legítima defensa proporcionalidad')">legítima defensa</span>
+    <span onclick="buscarTermino('nemo tenetur prueba ilícita')">nemo tenetur</span>
+    <span onclick="buscarTermino('estupefacientes tenencia consumo personal')">estupefacientes consumo personal</span>
+    <span onclick="buscarTermino('abuso sexual prueba testimonial')">abuso sexual prueba</span>
+    <span onclick="buscarTermino('excarcelación peligro de fuga')">excarcelación</span>
+    <span onclick="buscarTermino('homicidio culposo dolo eventual')">dolo eventual</span>
+  </div>
+</div>
+
+<!-- FUENTES -->
+<div class="fuentes-bar">
+  <span class="label">Fuentes:</span>
+  <span class="fuente-badge fb-saij">SAIJ</span>
+  <span class="fuente-badge fb-csjn">CSJN</span>
+  <span class="fuente-badge fb-sf">PJ Santa Fe</span>
+  <span class="fuente-badge fb-pp">Pensamiento Penal</span>
+  <span class="fuente-badge fb-dpi">DPI Cuántico</span>
+</div>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="main">
+
+  <!-- Estado vacío (se oculta al buscar) -->
+  <div class="estado-vacio" id="estado-vacio">
+    <div class="icono-grande">⚖️</div>
+    <h3>Ingresá tu búsqueda para encontrar fallos</h3>
+    <p>Podés buscar por concepto jurídico, nombre de causa, artículo del código o tema</p>
+  </div>
+
+  <!-- Widget Google CSE — solo resultados -->
+  <div id="resultados-google" style="display:none">
+    <gcse:searchresults-only></gcse:searchresults-only>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>⚖️ Jurisprudencia Penal · Buscador gratuito · <a href="https://weblegal.com.ar">weblegal.com.ar</a></p>
+  <p style="margin-top:4px">Los resultados provienen de SAIJ, CSJN, PJ Santa Fe, Pensamiento Penal y DPI Cuántico</p>
+</footer>
+
+<!-- GOOGLE CSE SCRIPT -->
+<script async src="https://cse.google.com/cse.js?cx=804a37b1a79d242b9"></script>
+
+<script>
+  function hacerBusqueda() {
+    var q = document.getElementById('mi-input').value.trim();
+    if (!q) return;
+    // Mostrar resultados, ocultar estado vacío
+    document.getElementById('estado-vacio').style.display = 'none';
+    document.getElementById('resultados-google').style.display = 'block';
+    // Ejecutar búsqueda en el widget de Google
+    google.search.cse.element.getElement('searchresults-only0').execute(q);
+  }
+
+  function buscarTermino(termino) {
+    document.getElementById('mi-input').value = termino;
+    hacerBusqueda();
+  }
+
+  // Inicializar callback de Google CSE
+  window.__gcse = {
+    parsetags: 'explicit',
+    callback: function() {
+      google.search.cse.element.render({
+        div: document.querySelector('gcse\\:searchresults-only'),
+        tag: 'searchresults-only'
+      });
+    }
+  };
+</script>
+
+</body>
+</html>
