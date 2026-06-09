@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jurisprudencia Penal ÔÇö Buscador</title>
+  <title>Jurisprudencia Penal — Buscador</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -13,7 +13,7 @@
       min-height: 100vh;
     }
 
-    /* ÔöÇÔöÇ HEADER ÔöÇÔöÇ */
+    /* ── HEADER ── */
     header {
       background: #1B3A6B;
       color: white;
@@ -40,7 +40,7 @@
       border: 1px solid #3a6bc0;
     }
 
-    /* ÔöÇÔöÇ HERO / BUSCADOR ÔöÇÔöÇ */
+    /* ── HERO / BUSCADOR ── */
     .hero {
       background: linear-gradient(135deg, #1B3A6B 0%, #2a5298 100%);
       padding: 40px 24px 50px;
@@ -58,7 +58,7 @@
       margin-bottom: 28px;
     }
 
-    /* Caja de b├║squeda custom (visible antes del widget Google) */
+    /* Caja de búsqueda custom (visible antes del widget Google) */
     .search-box {
       max-width: 680px;
       margin: 0 auto;
@@ -88,7 +88,7 @@
     }
     .search-box button:hover { background: #e09400; }
 
-    /* B├║squedas sugeridas */
+    /* Búsquedas sugeridas */
     .sugeridas {
       max-width: 680px;
       margin: 14px auto 0;
@@ -109,7 +109,7 @@
     }
     .sugeridas span:hover { background: rgba(255,255,255,0.2); }
 
-    /* ÔöÇÔöÇ FUENTES ÔöÇÔöÇ */
+    /* ── FUENTES ── */
     .fuentes-bar {
       background: white;
       border-bottom: 1px solid #e2e8f0;
@@ -141,18 +141,18 @@
     .fb-pp      { color: #7c3aed; border-color: #c4b5fd; background: #f5f3ff; }
     .fb-dpi     { color: #d97706; border-color: #fcd34d; background: #fffbeb; }
 
-    /* ÔöÇÔöÇ CONTENEDOR PRINCIPAL ÔöÇÔöÇ */
+    /* ── CONTENEDOR PRINCIPAL ── */
     .main {
       max-width: 860px;
       margin: 0 auto;
       padding: 30px 20px 60px;
     }
 
-    /* ÔöÇÔöÇ WIDGET GOOGLE ÔöÇÔöÇ */
-    /* Ocultar barra de b├║squeda nativa de Google (usamos la nuestra) */
+    /* ── WIDGET GOOGLE ── */
+    /* Ocultar barra de búsqueda nativa de Google (usamos la nuestra) */
     .gsc-search-box { display: none !important; }
 
-    /* Ocultar im├ígenes de resultados */
+    /* Ocultar imágenes de resultados */
     .gsc-thumbnail-inside,
     .gsc-table-cell-thumbnail,
     .gs-image-box,
@@ -232,7 +232,7 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.06) !important;
     }
 
-    /* Estado vac├¡o */
+    /* Estado vacío */
     .estado-vacio {
       text-align: center;
       padding: 60px 20px;
@@ -242,7 +242,7 @@
     .estado-vacio h3 { font-size: 18px; color: #64748b; margin-bottom: 8px; }
     .estado-vacio p  { font-size: 13px; }
 
-    /* ÔöÇÔöÇ FOOTER ÔöÇÔöÇ */
+    /* ── FOOTER ── */
     footer {
       background: #1B3A6B;
       color: #a8c0e0;
@@ -267,10 +267,10 @@
 <!-- HEADER -->
 <header>
   <div class="logo">
-    <span class="icono">ÔÜû´©Å</span>
+    <span class="icono"></span>
     <div>
       <h1>Jurisprudencia Penal</h1>
-      <p>CSJN ┬À SAIJ ┬À PJ Santa Fe ┬À Pensamiento Penal ┬À DPI</p>
+      <p>CSJN · SAIJ · PJ Santa Fe · Pensamiento Penal · DPI</p>
     </div>
   </div>
   <span class="badge">Acceso gratuito</span>
@@ -279,25 +279,25 @@
 <!-- HERO + BUSCADOR -->
 <div class="hero">
   <h2>Buscador de Jurisprudencia Penal</h2>
-  <p>Busc├í por concepto, car├ítula, art├¡culo o tema jur├¡dico en las principales fuentes penales</p>
+  <p>Buscá por concepto, carátula, artículo o tema jurídico en las principales fuentes penales</p>
 
   <div class="search-box">
     <input
       type="text"
       id="mi-input"
-      placeholder='Ej: "prisi├│n preventiva madre lactante", "leg├¡tima defensa", "nemo tenetur"...'
+      placeholder='Ej: "prisión preventiva madre lactante", "legítima defensa", "nemo tenetur"...'
       onkeydown="if(event.key==='Enter') hacerBusqueda()"
     />
-    <button onclick="hacerBusqueda()">­ƒöì Buscar</button>
+    <button onclick="hacerBusqueda()">Buscar</button>
   </div>
 
   <div class="sugeridas">
-    <span onclick="buscarTermino('prisi├│n preventiva plazo razonable')">prisi├│n preventiva plazo razonable</span>
-    <span onclick="buscarTermino('leg├¡tima defensa proporcionalidad')">leg├¡tima defensa</span>
-    <span onclick="buscarTermino('nemo tenetur prueba il├¡cita')">nemo tenetur</span>
+    <span onclick="buscarTermino('prisión preventiva plazo razonable')">prisión preventiva plazo razonable</span>
+    <span onclick="buscarTermino('legítima defensa proporcionalidad')">legítima defensa</span>
+    <span onclick="buscarTermino('nemo tenetur prueba ilícita')">nemo tenetur</span>
     <span onclick="buscarTermino('estupefacientes tenencia consumo personal')">estupefacientes consumo personal</span>
     <span onclick="buscarTermino('abuso sexual prueba testimonial')">abuso sexual prueba</span>
-    <span onclick="buscarTermino('excarcelaci├│n peligro de fuga')">excarcelaci├│n</span>
+    <span onclick="buscarTermino('excarcelación peligro de fuga')">excarcelación</span>
     <span onclick="buscarTermino('homicidio culposo dolo eventual')">dolo eventual</span>
   </div>
 </div>
@@ -309,20 +309,20 @@
   <span class="fuente-badge fb-csjn">CSJN</span>
   <span class="fuente-badge fb-sf">PJ Santa Fe</span>
   <span class="fuente-badge fb-pp">Pensamiento Penal</span>
-  <span class="fuente-badge fb-dpi">DPI Cu├íntico</span>
+  <span class="fuente-badge fb-dpi">DPI Cuántico</span>
 </div>
 
 <!-- CONTENIDO PRINCIPAL -->
 <div class="main">
 
-  <!-- Estado vac├¡o (se oculta al buscar) -->
+  <!-- Estado vacío (se oculta al buscar) -->
   <div class="estado-vacio" id="estado-vacio">
-    <div class="icono-grande">ÔÜû´©Å</div>
-    <h3>Ingres├í tu b├║squeda para encontrar fallos</h3>
-    <p>Pod├®s buscar por concepto jur├¡dico, nombre de causa, art├¡culo del c├│digo o tema</p>
+    <div class="icono-grande"></div>
+    <h3>Ingresá tu búsqueda para encontrar fallos</h3>
+    <p>Podés buscar por concepto jurídico, nombre de causa, artículo del código o tema</p>
   </div>
 
-  <!-- Widget Google CSE ÔÇö solo resultados -->
+  <!-- Widget Google CSE — solo resultados -->
   <div id="resultados-google" style="display:none">
     <gcse:searchresults-only></gcse:searchresults-only>
   </div>
@@ -331,8 +331,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>ÔÜû´©Å Jurisprudencia Penal ┬À Buscador gratuito ┬À <a href="https://weblegal.com.ar">weblegal.com.ar</a></p>
-  <p style="margin-top:4px">Los resultados provienen de SAIJ, CSJN, PJ Santa Fe, Pensamiento Penal y DPI Cu├íntico</p>
+  <p> Jurisprudencia Penal · Buscador gratuito · <a href="https://weblegal.com.ar">weblegal.com.ar</a></p>
+  <p style="margin-top:4px">Los resultados provienen de SAIJ, CSJN, PJ Santa Fe, Pensamiento Penal y DPI Cuántico</p>
 </footer>
 
 <!-- GOOGLE CSE SCRIPT -->
@@ -342,10 +342,10 @@
   function hacerBusqueda() {
     var q = document.getElementById('mi-input').value.trim();
     if (!q) return;
-    // Mostrar resultados, ocultar estado vac├¡o
+    // Mostrar resultados, ocultar estado vacío
     document.getElementById('estado-vacio').style.display = 'none';
     document.getElementById('resultados-google').style.display = 'block';
-    // Ejecutar b├║squeda en el widget de Google
+    // Ejecutar búsqueda en el widget de Google
     google.search.cse.element.getElement('searchresults-only0').execute(q);
   }
 
