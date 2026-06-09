@@ -25,43 +25,44 @@
     header .badge { font-size: 10px; color: #7a9fc0; border: 1px solid #2d5490; padding: 3px 10px; border-radius: 20px; }
 
     .hero {
-      background: #1B3A6B; padding: 32px 24px 40px;
+      background: #1B3A6B; padding: 40px 24px 48px;
       text-align: center; color: white;
     }
-    .hero h2 { font-size: 22px; font-weight: 700; margin-bottom: 5px; }
-    .hero p { font-size: 12.5px; color: #7a9fc0; margin-bottom: 22px; }
+    .hero h2 { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+    .hero p { font-size: 13px; color: #7a9fc0; margin-bottom: 28px; }
 
-    .search-wrap { max-width: 620px; margin: 0 auto; }
+    .search-wrap { max-width: 640px; margin: 0 auto; }
     .search-row {
       display: flex; background: white; border-radius: 8px;
-      overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+      overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
       border: 2px solid transparent; transition: border-color 0.2s;
     }
     .search-row:focus-within { border-color: #f0a500; }
     .search-row input {
       flex: 1; border: none; outline: none;
-      font-size: 14px; color: #1e293b; padding: 13px 16px;
+      font-size: 15px; color: #1e293b; padding: 14px 18px;
     }
     .search-row input::placeholder { color: #94a3b8; }
     .search-row button {
       background: #f0a500; color: #1B3A6B; border: none;
-      padding: 0 22px; font-size: 13px; font-weight: 700;
-      cursor: pointer; letter-spacing: 0.3px; transition: background 0.15s;
+      padding: 0 28px; font-size: 14px; font-weight: 700;
+      cursor: pointer; transition: background 0.15s;
     }
     .search-row button:hover { background: #d99400; }
 
-    .sugeridas { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 12px; }
+    .sugeridas { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 14px; }
     .sugeridas button {
       font-size: 11px; color: #8aafd4;
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.07);
       border: 1px solid rgba(255,255,255,0.15);
-      padding: 3px 11px; border-radius: 20px; cursor: pointer;
+      padding: 4px 12px; border-radius: 20px; cursor: pointer;
+      transition: all 0.15s;
     }
     .sugeridas button:hover { background: rgba(255,255,255,0.15); color: white; }
 
     .fuentes-bar {
       background: white; border-bottom: 1px solid #dde3ed;
-      padding: 7px 24px; display: flex; align-items: center;
+      padding: 8px 24px; display: flex; align-items: center;
       gap: 8px; flex-wrap: wrap; justify-content: center;
     }
     .lbl { font-size: 10px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
@@ -73,54 +74,32 @@
     .fb-dpi  { color: #d97706; border-color: #fcd34d; background: #fffbeb; }
     .fb-ba   { color: #0891b2; border-color: #67e8f9; background: #ecfeff; }
 
-    .main { max-width: 780px; margin: 0 auto; padding: 24px 20px 60px; }
+    .main { max-width: 700px; margin: 0 auto; padding: 40px 20px 60px; text-align: center; }
 
-    .estado-vacio { text-align: center; padding: 60px 20px; }
-    .estado-vacio svg { margin: 0 auto 14px; display: block; }
-    .estado-vacio h3 { font-size: 16px; color: #475569; margin-bottom: 5px; font-weight: 600; }
-    .estado-vacio p { font-size: 13px; color: #94a3b8; }
-
-    /* RESULTADOS */
-    #resultados { display: none; }
-    .res-info { font-size: 11px; color: #94a3b8; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #dde3ed; }
-    .res-card {
+    .instruccion {
       background: white; border: 1px solid #dde3ed;
-      border-left: 3px solid #1B3A6B; border-radius: 0 8px 8px 0;
-      padding: 14px 16px; margin-bottom: 8px;
-      transition: border-left-color 0.15s, box-shadow 0.15s;
+      border-left: 4px solid #f0a500;
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px; text-align: left; margin-bottom: 20px;
     }
-    .res-card:hover { border-left-color: #f0a500; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
-    .res-fuente {
-      display: inline-block; font-size: 9.5px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.5px;
-      color: #1B3A6B; background: #eef1f6;
-      padding: 2px 7px; border-radius: 3px; margin-bottom: 6px;
-    }
-    .res-titulo {
-      display: block; font-size: 14px; font-weight: 600;
-      color: #1B3A6B; text-decoration: none; line-height: 1.35; margin-bottom: 5px;
-    }
-    .res-titulo:hover { color: #f0a500; }
-    .res-snippet { font-size: 12.5px; color: #4b5563; line-height: 1.6; }
-    .res-url { font-size: 10.5px; color: #94a3b8; margin-top: 5px; }
+    .instruccion h3 { font-size: 14px; font-weight: 700; color: #1B3A6B; margin-bottom: 8px; }
+    .instruccion p  { font-size: 13px; color: #475569; line-height: 1.6; }
+    .instruccion strong { color: #1B3A6B; }
 
-    .paginacion { display: flex; justify-content: center; gap: 5px; margin-top: 20px; flex-wrap: wrap; }
-    .pag-btn {
-      background: white; color: #475569; border: 1px solid #dde3ed;
-      border-radius: 5px; padding: 5px 11px; font-size: 12px;
-      font-weight: 500; cursor: pointer; transition: all 0.15s;
+    .fuentes-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px; margin-top: 20px;
     }
-    .pag-btn:hover { background: #eef1f6; color: #1B3A6B; }
-    .pag-btn.activo { background: #1B3A6B; color: white; border-color: #1B3A6B; }
-
-    .cargando { text-align: center; padding: 50px; display: none; }
-    .spinner {
-      width: 30px; height: 30px; margin: 0 auto 12px;
-      border: 3px solid #dde3ed; border-top-color: #1B3A6B;
-      border-radius: 50%; animation: spin 0.65s linear infinite;
+    .fuente-card {
+      background: white; border: 1px solid #dde3ed;
+      border-radius: 8px; padding: 14px 16px;
+      text-decoration: none; color: inherit;
+      transition: box-shadow 0.15s, border-color 0.15s;
+      text-align: left;
     }
-    .cargando p { font-size: 13px; color: #64748b; }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .fuente-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.1); border-color: #1B3A6B; }
+    .fuente-card .nombre { font-size: 13px; font-weight: 700; color: #1B3A6B; margin-bottom: 3px; }
+    .fuente-card .desc   { font-size: 11px; color: #64748b; }
 
     footer {
       background: #1B3A6B; border-top: 3px solid #f0a500;
@@ -146,18 +125,18 @@
 
 <div class="hero">
   <h2>Buscador de Jurisprudencia Penal</h2>
-  <p>Busca por concepto, caratula, articulo o tema juridico en las principales fuentes penales</p>
+  <p>Busca en las principales fuentes penales argentinas con un solo clic</p>
   <div class="search-wrap">
     <div class="search-row">
       <input type="text" id="q" placeholder='Ej: "prision preventiva madre lactante", "legitima defensa"...' />
-      <button onclick="buscar(1)">BUSCAR</button>
+      <button onclick="buscar()">BUSCAR</button>
     </div>
     <div class="sugeridas">
       <button onclick="sugerir('prision preventiva plazo razonable')">prision preventiva</button>
       <button onclick="sugerir('legitima defensa proporcionalidad')">legitima defensa</button>
       <button onclick="sugerir('nemo tenetur prueba ilicita')">nemo tenetur</button>
       <button onclick="sugerir('estupefacientes tenencia consumo personal')">estupefacientes</button>
-      <button onclick="sugerir('abuso sexual prueba testimonial')">abuso sexual</button>
+      <button onclick="sugerir('abuso sexual camara gesell')">abuso sexual</button>
       <button onclick="sugerir('excarcelacion peligro de fuga')">excarcelacion</button>
       <button onclick="sugerir('homicidio dolo eventual')">dolo eventual</button>
       <button onclick="sugerir('prision domiciliaria madre')">prision domiciliaria</button>
@@ -176,131 +155,65 @@
 </div>
 
 <div class="main">
-  <div class="estado-vacio" id="estado-vacio">
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.2" opacity="0.2">
-      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-    </svg>
-    <h3>Ingresa tu busqueda para encontrar fallos</h3>
-    <p>Podes buscar por concepto juridico, caratula, articulo del codigo o tema procesal</p>
+  <div class="instruccion">
+    <h3>Como funciona</h3>
+    <p>
+      Escribi tu busqueda y hace clic en <strong>BUSCAR</strong>.<br>
+      Se abre Google mostrando resultados de <strong>SAIJ, CSJN, PJ Santa Fe, Pensamiento Penal, DPI y SCBA</strong> solamente.<br>
+      Todos los links abren directamente el fallo original.
+    </p>
   </div>
-  <div class="cargando" id="cargando"><div class="spinner"></div><p>Buscando...</p></div>
-  <div id="resultados">
-    <div class="res-info" id="res-info"></div>
-    <div id="res-lista"></div>
-    <div class="paginacion" id="paginacion"></div>
+
+  <div class="fuentes-grid">
+    <a href="https://www.saij.gob.ar" target="_blank" class="fuente-card">
+      <div class="nombre">SAIJ</div>
+      <div class="desc">Sistema Argentino de Informacion Juridica</div>
+    </a>
+    <a href="https://sjconsulta.csjn.gov.ar" target="_blank" class="fuente-card">
+      <div class="nombre">CSJN</div>
+      <div class="desc">Corte Suprema de Justicia de la Nacion</div>
+    </a>
+    <a href="https://www.pjsantafe.gov.ar" target="_blank" class="fuente-card">
+      <div class="nombre">PJ Santa Fe</div>
+      <div class="desc">Poder Judicial de Santa Fe</div>
+    </a>
+    <a href="https://www.pensamientopenal.com.ar" target="_blank" class="fuente-card">
+      <div class="nombre">Pensamiento Penal</div>
+      <div class="desc">Revista de jurisprudencia penal</div>
+    </a>
+    <a href="https://dpicuantico.com" target="_blank" class="fuente-card">
+      <div class="nombre">DPI Cuantico</div>
+      <div class="desc">Doctrina y jurisprudencia</div>
+    </a>
+    <a href="https://www.scba.gov.ar" target="_blank" class="fuente-card">
+      <div class="nombre">SCBA</div>
+      <div class="desc">Suprema Corte de Buenos Aires</div>
+    </a>
   </div>
 </div>
 
 <footer>
   <p>Jurisprudencia Penal &middot; Buscador gratuito &middot; <a href="https://weblegal.com.ar">weblegal.com.ar</a> &middot; Antenucci Penal</p>
-  <p style="margin-top:3px">SAIJ &middot; CSJN &middot; PJ Santa Fe &middot; Pensamiento Penal &middot; DPI Cuantico &middot; SCBA</p>
 </footer>
 
 <script>
-// Sitios a buscar
-const SITES = [
-  'saij.gob.ar',
-  'sjconsulta.csjn.gov.ar',
-  'pjsantafe.gov.ar',
-  'pensamientopenal.com.ar',
-  'dpicuantico.com',
-  'scba.gov.ar'
-];
+  const SITES = 'site:saij.gob.ar OR site:sjconsulta.csjn.gov.ar OR site:pjsantafe.gov.ar OR site:pensamientopenal.com.ar OR site:dpicuantico.com OR site:scba.gov.ar';
 
-const FUENTES = {
-  'saij.gob.ar':             'SAIJ',
-  'sjconsulta.csjn.gov.ar':  'CSJN',
-  'csjn.gov.ar':             'CSJN',
-  'pjsantafe.gov.ar':        'PJ Santa Fe',
-  'pensamientopenal.com.ar': 'Pensamiento Penal',
-  'dpicuantico.com':         'DPI Cuantico',
-  'scba.gov.ar':             'SCBA',
-};
-
-function getFuente(url) {
-  for (const [dom, lbl] of Object.entries(FUENTES)) {
-    if (url.includes(dom)) return lbl;
-  }
-  try { return new URL(url).hostname.replace('www.',''); } catch(e) { return ''; }
-}
-
-document.getElementById('q').addEventListener('keydown', e => {
-  if (e.key === 'Enter') buscar(1);
-});
-
-function sugerir(txt) {
-  document.getElementById('q').value = txt;
-  buscar(1);
-}
-
-function buscar(pagina) {
-  const q = document.getElementById('q').value.trim();
-  if (!q) return;
-
-  document.getElementById('estado-vacio').style.display = 'none';
-  document.getElementById('resultados').style.display   = 'none';
-  document.getElementById('cargando').style.display     = 'block';
-
-  // Construir query con site: operators
-  const siteQuery = SITES.map(s => 'site:' + s).join(' OR ');
-  const fullQuery = encodeURIComponent(q + ' (' + siteQuery + ')');
-  const start = (pagina - 1) * 10 + 1;
-
-  // Usar SerpApi via allorigins proxy (gratis, sin key)
-  // Alternativa: OpenSearch de SAIJ directo
-  const url = `https://api.allorigins.win/get?url=${encodeURIComponent('https://www.googleapis.com/customsearch/v1?key=AIzaSyA1KsNiUcRJMn0OPPdcYkkGpOUpapoa5Ys&cx=804a37b1a79d242b9&q=' + encodeURIComponent(q) + '&start=' + start + '&num=10&lr=lang_es')}`;
-
-  fetch(url)
-    .then(r => r.json())
-    .then(wrapper => {
-      const data = JSON.parse(wrapper.contents);
-      mostrar(data, pagina, q);
-    })
-    .catch(() => abrirEnGoogle(q));
-}
-
-function mostrar(data, pagina, q) {
-  document.getElementById('cargando').style.display = 'none';
-
-  if (data.error || !data.items || data.items.length === 0) {
-    abrirEnGoogle(q);
-    return;
+  function buscar() {
+    const q = document.getElementById('q').value.trim();
+    if (!q) return;
+    const url = 'https://www.google.com/search?q=' + encodeURIComponent(q + ' (' + SITES + ')');
+    window.open(url, '_blank');
   }
 
-  const total  = parseInt(data.searchInformation?.totalResults || 0);
-  const tiempo = data.searchInformation?.formattedSearchTime || '?';
-  document.getElementById('res-info').textContent =
-    `${total.toLocaleString('es-AR')} resultados (${tiempo} seg)`;
+  function sugerir(txt) {
+    document.getElementById('q').value = txt;
+    buscar();
+  }
 
-  document.getElementById('res-lista').innerHTML = data.items.map(item => {
-    const fuente  = getFuente(item.link || '');
-    const titulo  = item.htmlTitle  || item.title  || 'Sin titulo';
-    const snippet = (item.htmlSnippet || item.snippet || '').replace(/\n/g, ' ');
-    return `
-      <div class="res-card">
-        <span class="res-fuente">${fuente}</span>
-        <a class="res-titulo" href="${item.link}" target="_blank" rel="noopener">${titulo}</a>
-        <div class="res-snippet">${snippet}</div>
-        <div class="res-url">${item.displayLink || ''}</div>
-      </div>`;
-  }).join('');
-
-  const paginas = Math.min(Math.ceil(total / 10), 10);
-  document.getElementById('paginacion').innerHTML =
-    Array.from({length: paginas}, (_, i) => i + 1)
-      .map(i => `<button class="pag-btn ${i === pagina ? 'activo' : ''}" onclick="buscar(${i})">${i}</button>`)
-      .join('');
-
-  document.getElementById('resultados').style.display = 'block';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function abrirEnGoogle(q) {
-  document.getElementById('cargando').style.display = 'none';
-  document.getElementById('estado-vacio').style.display = 'block';
-  const siteQuery = SITES.map(s => 'site:' + s).join(' OR ');
-  window.open(`https://www.google.com/search?q=${encodeURIComponent(q + ' (' + siteQuery + ')')}`, '_blank');
-}
+  document.getElementById('q').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') buscar();
+  });
 </script>
 </body>
 </html>
