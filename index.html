@@ -12,28 +12,30 @@
 
     header {
       background: #1B3A6B; color: white;
-      padding: 0 32px; height: 52px;
+      padding: 0 32px; height: 56px;
       display: flex; align-items: center; justify-content: space-between;
       border-bottom: 3px solid #f0a500;
     }
-    .header-left { display: flex; align-items: center; gap: 14px; }
-    .escudo {
-      width: 32px; height: 32px; background: #f0a500;
-      border-radius: 50%; display: flex; align-items: center;
-      justify-content: center; font-size: 13px; font-weight: 900; color: #1B3A6B;
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .logo-cuervo {
+      width: 36px; height: 36px;
+      background: #f0a500; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; flex-shrink: 0;
     }
+    .logo-cuervo img { width: 26px; height: 26px; object-fit: contain; filter: brightness(0) invert(0); }
     header h1 { font-size: 15px; font-weight: 700; }
     header .sub { font-size: 10px; color: #7a9fc0; margin-top: 1px; }
     header .badge { font-size: 10px; color: #7a9fc0; border: 1px solid #2d5490; padding: 3px 10px; border-radius: 20px; }
 
     .hero {
-      background: #1B3A6B; padding: 36px 24px 44px;
+      background: #1B3A6B; padding: 32px 24px 20px;
       text-align: center; color: white;
     }
     .hero h2 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
-    .hero p { font-size: 13px; color: #7a9fc0; margin-bottom: 24px; }
+    .hero p { font-size: 13px; color: #7a9fc0; margin-bottom: 20px; }
 
-    .search-wrap { max-width: 640px; margin: 0 auto; }
+    .search-wrap { max-width: 660px; margin: 0 auto; }
     .search-row {
       display: flex; background: white; border-radius: 8px;
       overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
@@ -42,7 +44,7 @@
     .search-row:focus-within { border-color: #f0a500; }
     .search-row input {
       flex: 1; border: none; outline: none;
-      font-size: 15px; color: #1e293b; padding: 14px 18px;
+      font-size: 15px; color: #1e293b; padding: 13px 18px;
     }
     .search-row input::placeholder { color: #94a3b8; }
     .search-row button {
@@ -52,7 +54,7 @@
     }
     .search-row button:hover { background: #d99400; }
 
-    .sugeridas { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 14px; }
+    .sugeridas { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 12px; }
     .sugeridas button {
       font-size: 11px; color: #8aafd4;
       background: rgba(255,255,255,0.07);
@@ -62,21 +64,38 @@
     }
     .sugeridas button:hover { background: rgba(255,255,255,0.15); color: white; }
 
-    .fuentes-bar {
-      background: white; border-bottom: 1px solid #dde3ed;
-      padding: 8px 24px; display: flex; align-items: center;
+    /* ── FILTRO POR FUENTE ── */
+    .filtros-bar {
+      background: #1B3A6B; border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 12px 24px 16px; display: flex; align-items: center;
       gap: 8px; flex-wrap: wrap; justify-content: center;
     }
-    .lbl { font-size: 10px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
-    .fb { font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 20px; border: 1px solid; }
-    .fb-saij { color: #16a34a; border-color: #86efac; background: #f0fdf4; }
-    .fb-csjn { color: #dc2626; border-color: #fca5a5; background: #fef2f2; }
-    .fb-sf   { color: #2563eb; border-color: #93c5fd; background: #eff6ff; }
-    .fb-pp   { color: #7c3aed; border-color: #c4b5fd; background: #f5f3ff; }
-    .fb-dpi  { color: #d97706; border-color: #fcd34d; background: #fffbeb; }
-    .fb-ba   { color: #0891b2; border-color: #67e8f9; background: #ecfeff; }
+    .filtros-lbl { font-size: 10px; color: #5a7fa8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; margin-right: 4px; }
+    .filtro-btn {
+      font-size: 11px; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px; border: 1px solid;
+      cursor: pointer; transition: all 0.15s; user-select: none;
+    }
+    .filtro-btn.activo  { opacity: 1; }
+    .filtro-btn.inactivo { opacity: 0.35; }
 
-    .main { max-width: 860px; margin: 0 auto; padding: 28px 20px 60px; }
+    .filtro-saij { color: #16a34a; border-color: #86efac; background: #f0fdf4; }
+    .filtro-csjn { color: #dc2626; border-color: #fca5a5; background: #fef2f2; }
+    .filtro-sf   { color: #2563eb; border-color: #93c5fd; background: #eff6ff; }
+    .filtro-pp   { color: #7c3aed; border-color: #c4b5fd; background: #f5f3ff; }
+    .filtro-dpi  { color: #d97706; border-color: #fcd34d; background: #fffbeb; }
+    .filtro-ba   { color: #0891b2; border-color: #67e8f9; background: #ecfeff; }
+
+    .filtro-todo {
+      font-size: 11px; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.1);
+      color: #a8c4de; cursor: pointer; transition: all 0.15s;
+    }
+    .filtro-todo:hover { background: rgba(255,255,255,0.2); color: white; }
+
+    .main { max-width: 860px; margin: 0 auto; padding: 24px 20px 60px; }
 
     .estado-inicial {
       text-align: center; padding: 60px 20px; color: #94a3b8;
@@ -84,10 +103,8 @@
     .estado-inicial h3 { font-size: 16px; color: #64748b; margin-bottom: 8px; }
     .estado-inicial p { font-size: 13px; }
 
-    /* Ocultar la barra de busqueda nativa del widget */
     .gsc-search-box, .gsc-search-box-tools { display: none !important; }
 
-    /* Resultados del widget */
     .gsc-result {
       background: white !important;
       border: 1px solid #dde3ed !important;
@@ -106,34 +123,18 @@
       text-decoration: none !important;
     }
     .gs-title:hover { color: #f0a500 !important; }
-
-    .gs-snippet {
-      font-size: 13px !important;
-      color: #475569 !important;
-      line-height: 1.6 !important;
-    }
-    .gsc-url-top, .gsc-url-bottom {
-      color: #94a3b8 !important;
-      font-size: 11px !important;
-    }
-    .gsc-results-wrapper-overlay,
-    .gsc-results-wrapper-nooverlay { box-shadow: none !important; }
+    .gs-snippet { font-size: 13px !important; color: #475569 !important; line-height: 1.6 !important; }
+    .gsc-url-top, .gsc-url-bottom { color: #94a3b8 !important; font-size: 11px !important; }
+    .gsc-results-wrapper-overlay, .gsc-results-wrapper-nooverlay { box-shadow: none !important; }
 
     .gsc-cursor-box { text-align: center; margin-top: 20px; }
     .gsc-cursor-page {
-      background: white !important;
-      color: #1B3A6B !important;
-      border: 1px solid #dde3ed !important;
-      border-radius: 6px !important;
-      padding: 6px 14px !important;
-      font-size: 13px !important;
-      font-weight: 600 !important;
-      margin: 0 3px !important;
+      background: white !important; color: #1B3A6B !important;
+      border: 1px solid #dde3ed !important; border-radius: 6px !important;
+      padding: 6px 14px !important; font-size: 13px !important;
+      font-weight: 600 !important; margin: 0 3px !important;
     }
-    .gsc-cursor-current-page {
-      background: #1B3A6B !important;
-      color: white !important;
-    }
+    .gsc-cursor-current-page { background: #1B3A6B !important; color: white !important; }
 
     footer {
       background: #1B3A6B; border-top: 3px solid #f0a500;
@@ -147,7 +148,9 @@
 
 <header>
   <div class="header-left">
-    <div class="escudo">AP</div>
+    <div class="logo-cuervo">
+      <img src="favicon.png" alt="Antenucci Penal"/>
+    </div>
     <div>
       <h1>Jurisprudencia Penal</h1>
       <div class="sub">CSJN &middot; SAIJ &middot; PJ Santa Fe &middot; Pensamiento Penal &middot; DPI &middot; SCBA</div>
@@ -177,22 +180,23 @@
   </div>
 </div>
 
-<div class="fuentes-bar">
-  <span class="lbl">Fuentes:</span>
-  <span class="fb fb-saij">SAIJ</span>
-  <span class="fb fb-csjn">CSJN</span>
-  <span class="fb fb-sf">PJ Santa Fe</span>
-  <span class="fb fb-pp">Pensamiento Penal</span>
-  <span class="fb fb-dpi">DPI Cuantico</span>
-  <span class="fb fb-ba">SCBA</span>
+<!-- FILTROS POR FUENTE -->
+<div class="filtros-bar">
+  <span class="filtros-lbl">Filtrar:</span>
+  <button class="filtro-todo" onclick="seleccionarTodas()">Todas</button>
+  <button class="filtro-btn filtro-saij activo" data-site="saij.gob.ar" onclick="toggleFiltro(this)">SAIJ</button>
+  <button class="filtro-btn filtro-csjn activo" data-site="sjconsulta.csjn.gov.ar" onclick="toggleFiltro(this)">CSJN</button>
+  <button class="filtro-btn filtro-sf activo" data-site="pjsantafe.gov.ar" onclick="toggleFiltro(this)">PJ Santa Fe</button>
+  <button class="filtro-btn filtro-pp activo" data-site="pensamientopenal.com.ar" onclick="toggleFiltro(this)">Pensamiento Penal</button>
+  <button class="filtro-btn filtro-dpi activo" data-site="dpicuantico.com" onclick="toggleFiltro(this)">DPI Cuantico</button>
+  <button class="filtro-btn filtro-ba activo" data-site="scba.gov.ar" onclick="toggleFiltro(this)">SCBA</button>
 </div>
 
 <div class="main">
   <div class="estado-inicial" id="estado-inicial">
     <h3>Ingresa tu busqueda para encontrar fallos</h3>
-    <p>Busca por concepto juridico, caratula, articulo o tema</p>
+    <p>Usá los filtros para elegir en que fuentes buscar</p>
   </div>
-
   <div id="resultados-cse" style="display:none">
     <gcse:searchresults-only></gcse:searchresults-only>
   </div>
@@ -202,12 +206,8 @@
   <p>Jurisprudencia Penal &middot; Buscador gratuito &middot; <a href="https://weblegal.com.ar">weblegal.com.ar</a> &middot; Antenucci Penal</p>
 </footer>
 
-<!-- Google CSE -->
 <script>
-window.__gcse = {
-  parsetags: 'explicit',
-  callback: cseCallback
-};
+window.__gcse = { parsetags: 'explicit', callback: cseCallback };
 function cseCallback() {
   google.search.cse.element.render({
     div: document.querySelector('#resultados-cse gcse\\:searchresults-only'),
@@ -224,15 +224,37 @@ function set(txt) {
   buscar();
 }
 
+function toggleFiltro(btn) {
+  var activos = document.querySelectorAll('.filtro-btn.activo');
+  // No permitir deseleccionar el ultimo activo
+  if (btn.classList.contains('activo') && activos.length === 1) return;
+  btn.classList.toggle('activo');
+  btn.classList.toggle('inactivo');
+}
+
+function seleccionarTodas() {
+  document.querySelectorAll('.filtro-btn').forEach(function(b) {
+    b.classList.add('activo');
+    b.classList.remove('inactivo');
+  });
+}
+
+function getSitesQuery() {
+  var activos = document.querySelectorAll('.filtro-btn.activo');
+  if (activos.length === 0 || activos.length === 6) return ''; // todas = sin filtro extra
+  var sites = Array.from(activos).map(function(b) { return 'site:' + b.dataset.site; });
+  return ' (' + sites.join(' OR ') + ')';
+}
+
 function buscar() {
   var q = document.getElementById('q').value.trim();
   if (!q) return;
+  var qFinal = q + getSitesQuery();
   document.getElementById('estado-inicial').style.display = 'none';
   document.getElementById('resultados-cse').style.display = 'block';
   try {
-    google.search.cse.element.getElement('jurispenal').execute(q);
+    google.search.cse.element.getElement('jurispenal').execute(qFinal);
   } catch(e) {
-    // CSE aun no cargado, reintento
     setTimeout(function(){ buscar(); }, 500);
   }
 }
@@ -241,36 +263,19 @@ document.getElementById('q').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') buscar();
 });
 
-// ============================================================
-// INTERCEPTOR DE CLICKS - fase de captura, antes del codigo CSE
-// Abre los links en nueva pestana en lugar del overlay de Google
-// ============================================================
+// Interceptor de clicks - fase captura
 document.addEventListener('click', function(e) {
-  // Buscar el <a> mas cercano
   var el = e.target;
-  while (el && el.tagName !== 'A') {
-    el = el.parentElement;
-  }
+  while (el && el.tagName !== 'A') { el = el.parentElement; }
   if (!el || el.tagName !== 'A') return;
-
-  // Solo actuar si el link esta dentro de los resultados CSE
-  var enResultados = el.closest('.gsc-results, .gsc-result, .gs-result, .gsc-webResult');
-  if (!enResultados) return;
-
-  // Extraer URL real (data-ctorig tiene la URL original antes del redirect de Google)
+  if (!el.closest('.gsc-results, .gsc-result, .gs-result, .gsc-webResult')) return;
   var url = el.getAttribute('data-ctorig') || el.href;
-
   if (!url || url === '#' || url.indexOf('javascript:') === 0) return;
-
-  // Bloquear el comportamiento del widget
   e.preventDefault();
   e.stopImmediatePropagation();
   e.stopPropagation();
-
-  // Abrir en nueva pestana
   window.open(url, '_blank', 'noopener,noreferrer');
-
-}, true); // true = FASE DE CAPTURA (dispara antes que el codigo de Google)
+}, true);
 </script>
 </body>
 </html>
